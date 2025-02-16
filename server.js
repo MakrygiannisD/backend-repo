@@ -4,7 +4,7 @@ const multer = require('multer');
 const fs = require('fs');
 const path = require('path');
 const allowedOrigin = process.env.CORS_ALLOWED_ORIGIN || '*';
-app.use(cors({ origin: allowedOrigin }));
+
 const app = express();
 const PORT = process.env.PORT || 5000;
 app.use(cors());
@@ -14,7 +14,7 @@ app.use(express.json());
 app.get('/', (req, res) => {
   res.send('Backend for Energy Consultant Website is running!');
 });
-
+app.use(cors({ origin: allowedOrigin }));
 // 📩 Handle Customer Submission with Invoice Upload
 const storage = multer.diskStorage({
   destination: (req, file, cb) => {
