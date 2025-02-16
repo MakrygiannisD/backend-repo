@@ -3,7 +3,8 @@ const cors = require('cors');
 const multer = require('multer');
 const fs = require('fs');
 const path = require('path');
-
+const allowedOrigin = process.env.CORS_ALLOWED_ORIGIN || '*';
+app.use(cors({ origin: allowedOrigin }));
 const app = express();
 const PORT = process.env.PORT || 5000;
 app.use(cors());
